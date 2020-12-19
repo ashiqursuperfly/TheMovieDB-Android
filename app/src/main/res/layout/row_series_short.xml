@@ -30,7 +30,7 @@
                 android:id="@+id/tv_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="?attr/colorTitleTextPrimary"
+                android:textColor="?attr/colorSubtitleTextPrimary"
                 android:fontFamily="@font/bangers"
                 android:textSize="18sp"
                 android:layout_marginTop="@dimen/dp8"

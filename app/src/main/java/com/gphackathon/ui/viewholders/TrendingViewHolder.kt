@@ -4,11 +4,9 @@ import android.view.View
 import com.gphackathon.base.BaseViewHolder
 import com.gphackathon.data.Const
 import com.gphackathon.data.models.TrendingContent
-import com.gphackathon.databinding.RowMovieShortBinding
 import com.gphackathon.databinding.RowTrendingContentBinding
 import com.gphackathon.util.helper.DateUtil
 import com.gphackathon.util.helper.load
-import java.lang.Exception
 
 
 /*
@@ -22,11 +20,11 @@ class TrendingViewHolder(
 
     override fun onBind() {
         mItem?.let {
-            binding.tvName.text = it.title
+            binding.tvName.text = it.getDisplayName()
             try {
-                binding.tvDate.text = DateUtil.convertDateFormats(it.release_date, "yyyy-M-dd", Const.DATE_FORMAT)
+                binding.tvDate.text = DateUtil.convertDateFormats(it.getDate()?:"", "yyyy-M-dd", Const.DATE_FORMAT)
             }catch (e: Exception) {
-                binding.tvDate.text = it.release_date
+                binding.tvDate.text = it.getDate()?:"Date Not Available"
             }
 
             binding.tvVotes.text = it.vote_count.toString()

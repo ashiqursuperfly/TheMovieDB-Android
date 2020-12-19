@@ -1,26 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <com.google.android.material.card.MaterialCardView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/dp8"
-        app:cardCornerRadius="@dimen/dp8"
-        app:cardElevation="@dimen/dp1">
+        android:layout_height="match_parent">
+
+
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/container"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingBottom="@dimen/dp16"
-            android:background="@color/overlay_white">
+            android:layout_height="match_parent"
+            android:paddingBottom="@dimen/dp64">
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/image"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dp350"
+                android:layout_height="@dimen/dp450"
                 android:scaleType="fitXY"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/ic_home"
@@ -34,8 +31,8 @@
                 android:layout_marginTop="@dimen/dp8"
                 android:fontFamily="@font/bangers"
                 android:maxLines="1"
-                android:textColor="?attr/colorSubtitleTextPrimary"
-                android:textSize="18sp"
+                android:textColor="?attr/colorTitleTextPrimary"
+                android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/image"
                 tools:text="Forrest Gump" />
@@ -53,6 +50,47 @@
                 app:layout_constraintTop_toBottomOf="@id/tv_name"
                 tools:text="29-12-98" />
 
+            <TextView
+                android:id="@+id/tv_tagline"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp16"
+                android:layout_marginTop="@dimen/dp8"
+                android:fontFamily="@font/bangers"
+                android:maxLines="1"
+                android:textColor="?attr/colorSubtitleTextPrimary"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_date"
+                tools:text="Forrest Gump" />
+
+
+            <TextView
+                android:id="@+id/tv_overview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp16"
+                android:layout_marginTop="@dimen/dp12"
+                android:fontFamily="@font/cairo"
+                android:textColor="?attr/colorNormalTextPrimary"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_tagline"
+                tools:text="After Santa Jaws loses hope in Fishmas, Baby Shark and William swim out to help Santa get back his Fishmash spirit!" />
+
+            <TextView
+                android:id="@+id/tv_genres"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp16"
+                android:layout_marginTop="@dimen/dp4"
+                android:fontFamily="@font/cairo"
+                android:textColor="?attr/colorNormalTextPrimary"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_overview"
+                tools:text="29-12-98" />
+
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/img_vote"
                 android:layout_width="@dimen/dp12"
@@ -62,7 +100,7 @@
                 android:layout_marginStart="@dimen/dp16"
                 android:fontFamily="@font/cairo"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_date"
+                app:layout_constraintTop_toBottomOf="@id/tv_genres"
                 />
 
             <TextView
@@ -76,23 +114,23 @@
                 android:layout_marginStart="@dimen/dp4"
                 app:layout_constraintBottom_toBottomOf="@+id/img_vote"
                 app:layout_constraintStart_toEndOf="@id/img_vote"
-                app:layout_constraintTop_toBottomOf="@id/tv_date"
+                app:layout_constraintTop_toBottomOf="@id/tv_genres"
                 tools:text="100" />
 
             <ImageButton
                 android:id="@+id/btn_add_to_wishlist"
                 android:layout_width="@dimen/dp32"
                 android:layout_height="@dimen/dp32"
-                android:background="@drawable/ic_wishlist"
                 android:layout_marginEnd="@dimen/dp20"
+                android:background="@drawable/ic_wishlist"
                 android:contentDescription="@string/label_wishlist"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_name" />
+                app:layout_constraintTop_toBottomOf="@id/tv_name" />
+
+
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </com.google.android.material.card.MaterialCardView>
-
+    </androidx.core.widget.NestedScrollView>
 </layout>

@@ -34,7 +34,7 @@
                 android:layout_marginTop="@dimen/dp8"
                 android:fontFamily="@font/bangers"
                 android:maxLines="1"
-                android:textColor="?attr/colorTitleTextPrimary"
+                android:textColor="?attr/colorSubtitleTextPrimary"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/image"
