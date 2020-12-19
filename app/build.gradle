@@ -38,6 +38,16 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    flavorDimensions "default"
+    productFlavors {
+        grameenphone {
+            applicationId "com.gphackathon.grameenphone"
+        }
+        telenor {
+            applicationId "com.gphackathon.telenor"
+        }
+
+    }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
