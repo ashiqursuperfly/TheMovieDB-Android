@@ -1,12 +1,12 @@
 ## Codemasters Submission
 
 ### Implementation Details
-- uses `AndroidX`
-- uses `Kotlin`
-- uses android jetpack `navigation` and `architecture` components
-- architectural pattern `MVVM` as recommended by Google
+- uses **`AndroidX`**
+- uses **`Kotlin`**
+- uses android jetpack **`navigation`** and **`architecture`** components
+- architectural pattern **`MVVM`** as recommended by Google
 - deals with security issues by keeping secrets like `api_key` isolated from source code
-- uses two types of caching mechanism.
+- uses **two** types of **caching** mechanism.
   - Glide Image Loader cache implementation. My implementation caches remote images upto 50mb which allows app to render high res images faster.
   - API caching. Caches network calls made by retrofit and loads data accordingly. These allows the user to have offline mode even when no internet is available.
 - uses separate build flavors for `grameenphone` and `telenor`. (Different icons and different app name)
@@ -49,8 +49,7 @@
 
 
 ### Project Structure
-- **`android`** - contains the android app ([Android Repository](https://github.com/TeamKagojerNouka/HackTheVerse_KagojerNoukaAndroid))
-
+- **`android`**
   - `/app/src/grameenphone` directory contains specific resources for Grameenphone app's flavor
   - `/app/src/telenor` directory contains specific resources for Grameenphone app's flavor
   - `/app/src/main/java/com/gphackathon` directory contains the user interfaces, view models, models, database etc. It has four sub-directories:
