@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="@dimen/dp200"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp8"
+        app:cardCornerRadius="@dimen/dp8"
+        app:cardElevation="@dimen/dp1">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/dp16"
+            android:background="@color/overlay_white">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/image"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp350"
+                android:scaleType="fitXY"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_home"
+                />
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="?attr/colorTitleTextPrimary"
+                android:textSize="16sp"
+                android:layout_marginTop="@dimen/dp8"
+                android:layout_marginStart="@dimen/dp16"
+                android:maxLines="1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/image"
+                tools:text="Forrest Gump" />
+
+            <TextView
+                android:id="@+id/tv_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp4"
+                android:layout_marginStart="@dimen/dp16"
+                android:textColor="?attr/colorNormalTextPrimary"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_name"
+                tools:text="29-12-98" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/img_vote"
+                android:layout_width="@dimen/dp12"
+                android:layout_height="@dimen/dp12"
+                app:srcCompat="@drawable/ic_vote"
+                android:layout_marginTop="@dimen/dp4"
+                android:layout_marginStart="@dimen/dp16"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_date"
+                />
+
+            <TextView
+                android:id="@+id/tv_votes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="@dimen/dp4"
+                android:textColor="?attr/colorNormalTextPrimary"
+                android:textSize="14sp"
+                android:layout_marginStart="@dimen/dp4"
+                app:layout_constraintBottom_toBottomOf="@+id/img_vote"
+                app:layout_constraintStart_toEndOf="@id/img_vote"
+                app:layout_constraintTop_toBottomOf="@id/tv_date"
+                tools:text="100" />
+
+            <ImageButton
+                android:id="@+id/btn_add_to_wishlist"
+                android:layout_width="@dimen/dp32"
+                android:layout_height="@dimen/dp32"
+                android:background="@drawable/ic_wishlist"
+                android:layout_marginEnd="@dimen/dp20"
+                android:contentDescription="@string/label_wishlist"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_name" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</layout>

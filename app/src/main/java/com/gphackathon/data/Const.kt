@@ -1,8 +1,4 @@
 package com.gphackathon.data
-
-import com.gphackathon.BuildConfig
-
-
 /*
  * Created by : 
  * <a href="https://www.github.com/ashiqursuperfly">Ashiqur Rahman</a> on 12/6/20.
@@ -17,7 +13,7 @@ object Const {
         }
     }
 
-    const val FILENAME_FORMAT = "yyyy-MM-dd-HH-mm-ss-SSS"
+    const val DATE_FORMAT = "dd MMM YYYY"
 
     const val UNLABELLED_DATA_ID = -1
 
@@ -27,7 +23,10 @@ object Const {
 
     object Api {
 
-        val BASE_URL = "https://api.themoviedb.org/3/"
+        const val BASE_URL = "https://api.themoviedb.org/3/"
+        const val BASE_POSTER_IMAGE = "https://image.tmdb.org/t/p/w780"
+
+        const val KEY = "1a97f3b8d5deee1d649c0025f3acf75c"
 
         const val SUCCESS = "success"
 

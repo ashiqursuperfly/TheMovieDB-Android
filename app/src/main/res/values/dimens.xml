@@ -10,4 +10,12 @@
     <dimen name="dp230">230dp</dimen>
 
     <dimen name="sp24">24sp</dimen>
+    <dimen name="dp1">1dp</dimen>
+    <dimen name="dp60">60dp</dimen>
+    <dimen name="dp150">150dp</dimen>
+    <dimen name="dp20">20dp</dimen>
+    <dimen name="dp12">12dp</dimen>
+    <dimen name="dp120">120dp</dimen>
+    <dimen name="dp220">220dp</dimen>
+    <dimen name="dp350">350dp</dimen>
 </resources>
