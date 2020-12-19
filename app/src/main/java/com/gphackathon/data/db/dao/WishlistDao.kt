@@ -23,7 +23,7 @@ interface WishlistDao {
     fun get(id: Int): WishlistEntity?
 
     @Query("SELECT * FROM " + Const.DB.TABLE_NAME.WISHLIST)
-    fun getAll(): List<WishlistEntity>
+    fun getAll(): List<WishlistEntity?>
 
 
     /* @Insert(onConflict = OnConflictStrategy.REPLACE)

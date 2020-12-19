@@ -17,4 +17,12 @@ data class WishlistEntity(
     val poster_path: String,
     val date: String,
     val type: String
-)
+) {
+    fun getPosterImageUrl(): String {
+        return Const.Api.BASE_POSTER_IMAGE + poster_path
+    }
+
+    interface OnClick {
+        fun onDelete(item: WishlistEntity)
+    }
+}

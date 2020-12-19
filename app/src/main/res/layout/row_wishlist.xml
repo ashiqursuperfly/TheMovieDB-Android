@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp140"
+        android:layout_margin="@dimen/dp8"
+        app:cardCornerRadius="@dimen/dp8"
+        app:cardElevation="@dimen/dp1">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/dp16"
+            android:background="@color/overlay_white">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/image"
+                android:layout_width="@dimen/dp80"
+                android:layout_height="@dimen/dp140"
+                android:scaleType="fitXY"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_home" />
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/bangers"
+                android:paddingEnd="@dimen/dp12"
+                android:maxLines="1"
+                android:layout_marginTop="@dimen/dp12"
+                android:layout_marginStart="@dimen/dp16"
+                android:textColor="?attr/colorTitleTextPrimary"
+                android:textSize="18sp"
+                app:layout_constraintStart_toEndOf="@+id/image"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Forrest Gump" />
+
+            <TextView
+                android:id="@+id/tv_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/cairo"
+                android:textColor="?attr/colorNormalTextPrimary"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="@+id/tv_name"
+                app:layout_constraintTop_toBottomOf="@+id/tv_name"
+                tools:text="29-12-98" />
+
+            <TextView
+                android:id="@+id/tv_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/cairo"
+                android:textColor="@color/dark_blue"
+                android:padding="@dimen/dp8"
+                android:textSize="14sp"
+                android:background="@drawable/bottom_nav_bg"
+                android:layout_marginTop="@dimen/dp8"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/tv_date"
+                app:layout_constraintTop_toBottomOf="@+id/tv_date"
+                tools:text="movie" />
+
+            <ImageButton
+                android:id="@+id/btn_remove_from_wishlist"
+                android:layout_width="@dimen/dp32"
+                android:layout_height="@dimen/dp32"
+                android:layout_marginTop="@dimen/dp12"
+                android:layout_marginEnd="@dimen/dp20"
+                android:background="@drawable/ic_delete"
+                android:contentDescription="@string/label_wishlist"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</layout>

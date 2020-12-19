@@ -1,6 +1,8 @@
 package com.gphackathon.ui.fragments.wishlist
 
 import com.gphackathon.base.BaseViewModel
+import com.gphackathon.data.db.AppDB
+import com.gphackathon.data.models.local.WishlistEntity
 
 
 /*
@@ -9,4 +11,10 @@ import com.gphackathon.base.BaseViewModel
 */
 
 class WishlistViewModel: BaseViewModel() {
+    val wishlistDb = AppDB.getInstance().wishlistDao()
+
+    fun getAllWishlistItems(): ArrayList<WishlistEntity?> {
+        return ArrayList(wishlistDb.getAll())
+    }
+
 }
