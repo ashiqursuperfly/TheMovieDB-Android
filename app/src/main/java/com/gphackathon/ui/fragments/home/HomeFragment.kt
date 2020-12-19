@@ -11,6 +11,7 @@ import com.gphackathon.data.models.TvSeriesData
 import com.gphackathon.ui.adapters.MovieAdapter
 import com.gphackathon.ui.adapters.TrendingContentAdapter
 import com.gphackathon.ui.adapters.TvSeriesAdapter
+import com.gphackathon.util.helper.DialogUtil
 import com.gphackathon.util.helper.Toaster
 import kotlinx.android.synthetic.main.layout_fragment_home.*
 
@@ -38,15 +39,16 @@ class HomeFragment: BaseFragment() {
         initTrendingContents()
 
         observeData()
+        DialogUtil.showLoader(requireContext())
         mHomeViewModel.getAllPopularMovies()
-        mHomeViewModel.getAllPopularSeries()
-        mHomeViewModel.getAllTrendingContent()
+
     }
 
     private fun observeData() {
         mHomeViewModel.mPopularMoviesLiveData.observe(
             viewLifecycleOwner,
             Observer {
+                mHomeViewModel.getAllPopularSeries()
                 if (it == null) return@Observer
                 mMovieAdapter.updateItems(ArrayList(it.results))
 
@@ -55,6 +57,7 @@ class HomeFragment: BaseFragment() {
         mHomeViewModel.mPopularSeriesLiveData.observe(
             viewLifecycleOwner,
             Observer {
+                mHomeViewModel.getAllTrendingContent()
                 if (it == null) return@Observer
                 mSeriesAdapter.updateItems(ArrayList(it.results))
 
@@ -63,6 +66,7 @@ class HomeFragment: BaseFragment() {
         mHomeViewModel.mTrendingContentsLiveData.observe(
             viewLifecycleOwner,
             Observer {
+                DialogUtil.hideLoader()
                 if (it == null) return@Observer
                 mTrendingContentAdapter.updateItems(ArrayList(it.results))
             }

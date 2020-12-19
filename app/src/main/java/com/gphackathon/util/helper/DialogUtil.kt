@@ -3,14 +3,44 @@ package com.gphackathon.util.helper
 import android.app.Activity
 import android.content.Context
 import android.content.DialogInterface
+import android.view.LayoutInflater
 import android.view.View
 import androidx.appcompat.app.AlertDialog
+import androidx.databinding.DataBindingUtil
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.gphackathon.R
+import com.gphackathon.databinding.LayoutLoaderBinding
 
 /* Created by ashiq.buet16 **/
 
 object DialogUtil {
     private var mLoader: AlertDialog? = null
+
+    fun showLoader(context: Context, cancelable: Boolean = false): AlertDialog? {
+
+        val binding = DataBindingUtil.inflate<LayoutLoaderBinding>(
+            LayoutInflater.from(context), R.layout.layout_loader, null, false
+        )
+
+        hideLoader()
+        mLoader = AlertDialog.Builder(context, R.style.TransparentDialog)
+            .setView(binding.root)
+            .setCancelable(cancelable)
+            .create()
+
+        mLoader?.show()
+
+        return mLoader
+    }
+
+    fun hideLoader() {
+        try {
+            mLoader?.dismiss()
+        }catch (e: Exception){
+
+        }
+    }
+
 
     fun showBasicAlertDialog(
         activity: Activity,
