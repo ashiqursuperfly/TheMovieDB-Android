@@ -7,7 +7,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.gphackathon.R
 import com.gphackathon.base.BaseFragment
 import com.gphackathon.data.models.MovieData
+import com.gphackathon.data.models.TvSeriesData
 import com.gphackathon.ui.adapters.MovieAdapter
+import com.gphackathon.ui.adapters.TvSeriesAdapter
 import com.gphackathon.util.helper.Toaster
 import kotlinx.android.synthetic.main.layout_fragment_home.*
 
@@ -20,6 +22,7 @@ import kotlinx.android.synthetic.main.layout_fragment_home.*
 class HomeFragment: BaseFragment() {
 
     private lateinit var mMovieAdapter: MovieAdapter
+    private lateinit var mSeriesAdapter: TvSeriesAdapter
     private lateinit var mHomeViewModel: HomeViewModel
 
     override fun getLayoutId(): Int {
@@ -28,10 +31,12 @@ class HomeFragment: BaseFragment() {
 
     override fun afterOnViewCreated() {
         mHomeViewModel = requireActivity().let { ViewModelProviders.of(it).get(HomeViewModel::class.java) }
-        initRecyclerView()
+        initMovies()
+        initSeries()
 
         observeData()
         mHomeViewModel.getAllPopularMovies()
+        mHomeViewModel.getAllPopularSeries()
     }
 
     private fun observeData() {
@@ -43,9 +48,17 @@ class HomeFragment: BaseFragment() {
 
             }
         )
+        mHomeViewModel.mPopularSeriesLiveData.observe(
+            viewLifecycleOwner,
+            Observer {
+                if (it == null) return@Observer
+                mSeriesAdapter.updateItems(ArrayList(it.results))
+
+            }
+        )
     }
 
-    private fun initRecyclerView() {
+    private fun initMovies() {
         mMovieAdapter = MovieAdapter()
         mMovieAdapter.setCallback(object : MovieData.OnClick {
             override fun onClick(movieData: MovieData) {
@@ -55,11 +68,31 @@ class HomeFragment: BaseFragment() {
 
         rv_movies.setHasFixedSize(true)
 
-        val layoutManager = LinearLayoutManager(context, GridLayoutManager.HORIZONTAL, false)
+        val layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
 
         rv_movies.layoutManager = layoutManager
 
         rv_movies.adapter = mMovieAdapter
 
     }
+
+    private fun initSeries() {
+        mSeriesAdapter = TvSeriesAdapter()
+        mSeriesAdapter.setCallback(object : TvSeriesData.OnClick {
+            override fun onClick(seriesData: TvSeriesData) {
+                Toaster.showToast(seriesData.overview)
+            }
+
+        })
+
+        rv_tv_series.setHasFixedSize(true)
+
+        val layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+
+        rv_tv_series.layoutManager = layoutManager
+
+        rv_tv_series.adapter = mSeriesAdapter
+
+    }
+
 }
