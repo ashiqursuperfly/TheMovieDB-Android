@@ -81,7 +81,7 @@ object ApiClient {
     private fun setCache(activity: Activity): Cache {
         val httpCacheDirectory = File(activity.cacheDir, "offlineCache")
 
-        cache = Cache(httpCacheDirectory, 10 * 1024 * 1024)
+        cache = Cache(httpCacheDirectory, 10 * 1024 * 1024) // 10 MB
 
         return cache
 
