@@ -25,6 +25,7 @@ object Const {
 
         const val BASE_URL = "https://api.themoviedb.org/3/"
         const val BASE_POSTER_IMAGE = "https://image.tmdb.org/t/p/w780"
+        const val BASE_BACKDROP_IMAGE = "https://image.tmdb.org/t/p/w780"
 
         const val KEY = "1a97f3b8d5deee1d649c0025f3acf75c"
 

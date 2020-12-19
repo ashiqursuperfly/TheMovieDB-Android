@@ -5,6 +5,7 @@ import com.gphackathon.base.BaseViewModel
 import com.gphackathon.data.Const
 import com.gphackathon.data.response.PopularMoviesResponse
 import com.gphackathon.data.response.PopularTVSeriesResponse
+import com.gphackathon.data.response.TrendingContentResponse
 import com.gphackathon.util.helper.Toaster
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -21,6 +22,7 @@ class HomeViewModel: BaseViewModel() {
 
     val mPopularMoviesLiveData = MutableLiveData<PopularMoviesResponse>()
     val mPopularSeriesLiveData = MutableLiveData<PopularTVSeriesResponse>()
+    val mTrendingContentsLiveData = MutableLiveData<TrendingContentResponse>()
 
 
     fun getAllPopularMovies(year: String = "2020", sortBy: String = "vote_average.desc") {
@@ -67,6 +69,29 @@ class HomeViewModel: BaseViewModel() {
                     Timber.d("Request Failed $it")
                     Toaster.showToast(it.message.toString())
                     mPopularSeriesLiveData.postValue(null)
+                }
+                )
+        )
+
+    }
+
+    fun getAllTrendingContent() {
+
+        mDisposable.add(
+            mApiService.getTrendingContents(
+                Const.Api.KEY
+            )
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+                    Timber.d("Response $it")
+                    mTrendingContentsLiveData.postValue(it)
+
+                }, {
+                    // val err = handleErrorResponse(it)
+                    Timber.d("Request Failed $it")
+                    Toaster.showToast(it.message.toString())
+                    mTrendingContentsLiveData.postValue(null)
                 }
                 )
         )

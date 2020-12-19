@@ -9,6 +9,7 @@ import com.gphackathon.base.BaseFragment
 import com.gphackathon.data.models.MovieData
 import com.gphackathon.data.models.TvSeriesData
 import com.gphackathon.ui.adapters.MovieAdapter
+import com.gphackathon.ui.adapters.TrendingContentAdapter
 import com.gphackathon.ui.adapters.TvSeriesAdapter
 import com.gphackathon.util.helper.Toaster
 import kotlinx.android.synthetic.main.layout_fragment_home.*
@@ -23,6 +24,7 @@ class HomeFragment: BaseFragment() {
 
     private lateinit var mMovieAdapter: MovieAdapter
     private lateinit var mSeriesAdapter: TvSeriesAdapter
+    private lateinit var mTrendingContentAdapter: TrendingContentAdapter
     private lateinit var mHomeViewModel: HomeViewModel
 
     override fun getLayoutId(): Int {
@@ -33,10 +35,12 @@ class HomeFragment: BaseFragment() {
         mHomeViewModel = requireActivity().let { ViewModelProviders.of(it).get(HomeViewModel::class.java) }
         initMovies()
         initSeries()
+        initTrendingContents()
 
         observeData()
         mHomeViewModel.getAllPopularMovies()
         mHomeViewModel.getAllPopularSeries()
+        mHomeViewModel.getAllTrendingContent()
     }
 
     private fun observeData() {
@@ -54,6 +58,13 @@ class HomeFragment: BaseFragment() {
                 if (it == null) return@Observer
                 mSeriesAdapter.updateItems(ArrayList(it.results))
 
+            }
+        )
+        mHomeViewModel.mTrendingContentsLiveData.observe(
+            viewLifecycleOwner,
+            Observer {
+                if (it == null) return@Observer
+                mTrendingContentAdapter.updateItems(ArrayList(it.results))
             }
         )
     }
@@ -92,6 +103,25 @@ class HomeFragment: BaseFragment() {
         rv_tv_series.layoutManager = layoutManager
 
         rv_tv_series.adapter = mSeriesAdapter
+
+    }
+
+    private fun initTrendingContents() {
+        mTrendingContentAdapter = TrendingContentAdapter()
+        mTrendingContentAdapter.setCallback(object : TvSeriesData.OnClick {
+            override fun onClick(seriesData: TvSeriesData) {
+                Toaster.showToast(seriesData.overview)
+            }
+
+        })
+
+        rv_trending.setHasFixedSize(true)
+
+        val layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+
+        rv_trending.layoutManager = layoutManager
+
+        rv_trending.adapter = mTrendingContentAdapter
 
     }
 
