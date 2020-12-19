@@ -2,16 +2,20 @@ package com.gphackathon.ui.fragments.home
 
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.gphackathon.R
 import com.gphackathon.base.BaseFragment
 import com.gphackathon.data.models.MovieData
+import com.gphackathon.data.models.TrendingContent
 import com.gphackathon.data.models.TvSeriesData
 import com.gphackathon.ui.adapters.MovieAdapter
 import com.gphackathon.ui.adapters.TrendingContentAdapter
 import com.gphackathon.ui.adapters.TvSeriesAdapter
 import com.gphackathon.util.helper.DialogUtil
+import com.gphackathon.util.helper.GsonUtil
+import com.gphackathon.util.helper.NavigationUtil
 import com.gphackathon.util.helper.Toaster
 import kotlinx.android.synthetic.main.layout_fragment_home.*
 
@@ -77,7 +81,14 @@ class HomeFragment: BaseFragment() {
         mMovieAdapter = MovieAdapter()
         mMovieAdapter.setCallback(object : MovieData.OnClick {
             override fun onClick(movieData: MovieData) {
-                Toaster.showToast(movieData.overview)
+                // Toaster.showToast(movieData.overview)
+                NavigationUtil.navigate(
+                    findNavController(),
+                    R.id.homeFragment,
+                    HomeFragmentDirections.actionHomeFragmentToDetailsFragment(
+                        movieJson = GsonUtil.toJson(movieData)
+                    )
+                )
             }
         })
 
@@ -95,7 +106,13 @@ class HomeFragment: BaseFragment() {
         mSeriesAdapter = TvSeriesAdapter()
         mSeriesAdapter.setCallback(object : TvSeriesData.OnClick {
             override fun onClick(seriesData: TvSeriesData) {
-                Toaster.showToast(seriesData.overview)
+                NavigationUtil.navigate(
+                    findNavController(),
+                    R.id.homeFragment,
+                    HomeFragmentDirections.actionHomeFragmentToDetailsFragment(
+                        seriesJson = GsonUtil.toJson(seriesData)
+                    )
+                )
             }
 
         })
@@ -112,11 +129,27 @@ class HomeFragment: BaseFragment() {
 
     private fun initTrendingContents() {
         mTrendingContentAdapter = TrendingContentAdapter()
-        mTrendingContentAdapter.setCallback(object : TvSeriesData.OnClick {
-            override fun onClick(seriesData: TvSeriesData) {
-                Toaster.showToast(seriesData.overview)
+        mTrendingContentAdapter.setCallback(object : TrendingContent.OnClick {
+            override fun onClick(item: TrendingContent) {
+                if (item.isMovie()) {
+                    NavigationUtil.navigate(
+                        findNavController(),
+                        R.id.homeFragment,
+                        HomeFragmentDirections.actionHomeFragmentToDetailsFragment(
+                            movieJson = GsonUtil.toJson(item)
+                        )
+                    )
+                }
+                else {
+                    NavigationUtil.navigate(
+                        findNavController(),
+                        R.id.homeFragment,
+                        HomeFragmentDirections.actionHomeFragmentToDetailsFragment(
+                            seriesJson = GsonUtil.toJson(item)
+                        )
+                    )
+                }
             }
-
         })
 
         rv_trending.setHasFixedSize(true)

@@ -10,8 +10,12 @@
         android:id="@id/homeFragment"
         android:name="com.gphackathon.ui.fragments.home.HomeFragment"
         android:label="@string/label_home"
-        tools:layout="@layout/layout_fragment_home"
-        />
+        tools:layout="@layout/layout_fragment_home">
+
+        <action
+            android:id="@+id/action_homeFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
+    </fragment>
 
     <fragment
         android:id="@id/wishlistFragment"
@@ -19,5 +23,24 @@
         android:label="@string/label_wishlist"
         tools:layout="@layout/layout_fragment_wishlist"
         />
+
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.gphackathon.ui.fragments.detail.DetailsFragment"
+        android:label="@string/label_detail"
+        tools:layout="@layout/layout_fragment_detail">
+
+        <argument
+            android:name="movieJson"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="@null"
+            />
+        <argument
+            android:name="seriesJson"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="@null" />
+    </fragment>
 
 </navigation>

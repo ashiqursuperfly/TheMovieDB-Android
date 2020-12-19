@@ -38,6 +38,15 @@ data class TrendingContent(
         return Const.Api.BASE_BACKDROP_IMAGE + poster_path
     }
 
+    fun isMovie(): Boolean {
+        if (media_type.trim().equals("movie", true)) return true
+        return false
+    }
+    fun isSeries(): Boolean {
+        if (media_type.trim().equals("tv", true)) return true
+        return false
+    }
+
     interface OnClick {
         fun onClick(item: TrendingContent)
     }

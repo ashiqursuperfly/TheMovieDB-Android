@@ -4,8 +4,11 @@ import com.gphackathon.data.Const
 import com.gphackathon.data.response.PopularMoviesResponse
 import com.gphackathon.data.response.PopularTVSeriesResponse
 import com.gphackathon.data.response.TrendingContentResponse
+import com.gphackathon.data.response.detail.movie.MovieDetailResponse
+import com.gphackathon.data.response.detail.series.SeriesDetailResponse
 import io.reactivex.Flowable
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 
@@ -34,5 +37,17 @@ interface ApiService {
     fun getTrendingContents(
         @Query(Const.Api.Params.API_KEY) apiKey: String
     ): Flowable<TrendingContentResponse>
+
+    @GET(Const.Api.EndPoints.GET_MOVIE_DETAIL)
+    fun getMovieDetail(
+        @Path(Const.Api.Params.ID) id: String,
+        @Query(Const.Api.Params.API_KEY) apiKey: String
+    ): Flowable<MovieDetailResponse>
+
+    @GET(Const.Api.EndPoints.GET_SERIES_DETAIL)
+    fun getSeriesDetail(
+        @Path(Const.Api.Params.ID) id: String,
+        @Query(Const.Api.Params.API_KEY) apiKey: String
+    ): Flowable<SeriesDetailResponse>
 
 }

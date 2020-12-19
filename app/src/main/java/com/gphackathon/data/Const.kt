@@ -35,12 +35,15 @@ object Const {
             const val GET_POPULAR_MOVIES = "discover/movie"
             const val GET_POPULAR_TV_SERIES = "discover/tv"
             const val GET_TRENDING_CONTENT = "trending/all/week"
+            const val GET_MOVIE_DETAIL = "https://api.themoviedb.org/3/movie/{${Params.ID}}"
+            const val GET_SERIES_DETAIL = "https://api.themoviedb.org/3/tv/{${Params.ID}}"
         }
 
         object Params {
             const val API_KEY = "api_key"
             const val RELEASE_YEAR = "primary_release_year"
             const val SORT_BY = "sort_by"
+            const val ID = "id"
         }
     }
 
