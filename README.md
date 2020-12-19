@@ -7,11 +7,16 @@
 - uses android jetpack **`navigation`** and **`architecture`** components
 - architectural pattern **`MVVM`** as recommended by Google
 - deals with security issues by keeping secrets like `api_key` isolated from source code
+- uses **`Glide`** for fetching remote images
+- uses **`Retrofit`** and **`RxAndroid`** to make API calls
+- uses **`Chucker`** for testing and logging API calls
+- uses **`Room`** ORM for local db
+- uses **`Lotte`** for animations
 - uses **two** types of **caching** mechanism.
   - Glide Image Loader cache implementation. My implementation caches remote images upto 50mb which allows app to render high res images faster.
   - API caching. Caches network calls made by **`retrofit`** and loads data accordingly. These allows the user to have offline mode even when no internet is available.
 - uses separate build flavors for `grameenphone` and `telenor`. (Different icons and different app name)
-- uses `junit`, `espresso` and `roboelectric` for testing
+- uses `Chucker`, `junit`, `espresso` and `roboelectric` for testing
 
 ### Features
 
