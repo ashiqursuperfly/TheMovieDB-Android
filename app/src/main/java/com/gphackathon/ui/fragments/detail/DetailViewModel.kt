@@ -1,6 +1,7 @@
 package com.gphackathon.ui.fragments.detail
 
 import androidx.lifecycle.MutableLiveData
+import com.gphackathon.BuildConfig
 import com.gphackathon.base.BaseViewModel
 import com.gphackathon.data.Const
 import com.gphackathon.data.db.AppDB
@@ -30,7 +31,7 @@ class DetailViewModel: BaseViewModel() {
         mDisposable.add(
             mApiService.getSeriesDetail(
                 id = id.toString(),
-                apiKey = Const.Api.KEY
+                apiKey = BuildConfig.API_KEY
             )
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -54,7 +55,7 @@ class DetailViewModel: BaseViewModel() {
         mDisposable.add(
             mApiService.getMovieDetail(
                 id = id.toString(),
-                apiKey = Const.Api.KEY
+                apiKey = BuildConfig.API_KEY
             )
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

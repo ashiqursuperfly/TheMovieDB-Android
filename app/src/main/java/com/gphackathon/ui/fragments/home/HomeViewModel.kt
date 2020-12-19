@@ -1,6 +1,7 @@
 package com.gphackathon.ui.fragments.home
 
 import androidx.lifecycle.MutableLiveData
+import com.gphackathon.BuildConfig
 import com.gphackathon.base.BaseViewModel
 import com.gphackathon.data.Const
 import com.gphackathon.data.db.AppDB
@@ -32,7 +33,7 @@ class HomeViewModel: BaseViewModel() {
 
         mDisposable.add(
             mApiService.getPopularMovies(
-                Const.Api.KEY,
+                BuildConfig.API_KEY,
                 year,
                 sortBy
             )
@@ -57,7 +58,7 @@ class HomeViewModel: BaseViewModel() {
 
         mDisposable.add(
             mApiService.getPopularTvSeries(
-                Const.Api.KEY,
+                BuildConfig.API_KEY,
                 year,
                 sortBy
             )
@@ -82,7 +83,7 @@ class HomeViewModel: BaseViewModel() {
 
         mDisposable.add(
             mApiService.getTrendingContents(
-                Const.Api.KEY
+                BuildConfig.API_KEY
             )
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

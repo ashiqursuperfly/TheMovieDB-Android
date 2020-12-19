@@ -6,6 +6,10 @@ plugins {
     id 'androidx.navigation.safeargs.kotlin'
 }
 
+def apikeyFile = rootProject.file("keys.properties")
+def apikeyProperties = new Properties()
+apikeyProperties.load(new FileInputStream(apikeyFile))
+
 android {
     compileSdkVersion 29
 
@@ -24,6 +28,8 @@ android {
         multiDexEnabled true
         vectorDrawables.useSupportLibrary = true
         resConfigs "en"
+
+        buildConfigField("String", "API_KEY", apikeyProperties['API_KEY'])
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }

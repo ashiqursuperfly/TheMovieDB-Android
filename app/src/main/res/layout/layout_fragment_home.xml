@@ -22,7 +22,6 @@
             android:fontFamily="@font/bangers"
             android:paddingEnd="@dimen/dp12"
             android:maxLines="1"
-            android:layout_marginTop="@dimen/dp12"
             android:layout_marginStart="@dimen/dp16"
             android:textColor="@color/black"
             android:textSize="22sp"
