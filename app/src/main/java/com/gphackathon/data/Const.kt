@@ -27,14 +27,20 @@ object Const {
 
     object Api {
 
-        val BASE_URL = "https://api.themoviedb.org/"
+        val BASE_URL = "https://api.themoviedb.org/3/"
 
         const val SUCCESS = "success"
 
         object EndPoints {
-            const val GET_CROPS = "crop"
-            const val GET_CROP_PROBLEMS = "issue"
-            const val GET_IMAGE_DATA_CATEGORY = "image-category"
+            const val GET_POPULAR_MOVIES = "discover/movie"
+            const val GET_POPULAR_TV_SERIES = "discover/tv"
+            const val GET_TRENDING_CONTENT = "trending/all/week"
+        }
+
+        object Params {
+            const val API_KEY = "api_key"
+            const val RELEASE_YEAR = "primary_release_year"
+            const val SORT_BY = "sort_by"
         }
     }
 
