@@ -36,7 +36,7 @@ class MainActivity : BaseActivity() {
         NavigationUI.setupActionBarWithNavController(this, mNavController, appBarConfiguration)
 
         mNavController.addOnDestinationChangedListener { controller, destination, arguments ->
-            if (destination.id == R.id.detailsFragment) {
+            if (destination.id == R.id.detailsFragment || destination.id == R.id.homeFragment) {
                 supportActionBar?.hide()
             } else {
                 supportActionBar?.show()

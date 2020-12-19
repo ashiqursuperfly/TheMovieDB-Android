@@ -15,34 +15,76 @@
         android:paddingBottom="@dimen/dp64"
         >
 
+        <TextView
+            android:id="@+id/tv_label_movies"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/bangers"
+            android:paddingEnd="@dimen/dp12"
+            android:maxLines="1"
+            android:layout_marginTop="@dimen/dp12"
+            android:layout_marginStart="@dimen/dp16"
+            android:textColor="@color/black"
+            android:textSize="22sp"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="Movies you may like .." />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_movies"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="@dimen/dp12"
+            app:layout_constraintTop_toBottomOf="@id/tv_label_movies"
+
             android:clipToPadding="false"
             tools:itemCount="4"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/row_movie_short"
             tools:orientation="horizontal" />
+
+        <TextView
+            android:id="@+id/tv_label_series"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/bangers"
+            android:paddingEnd="@dimen/dp12"
+            android:maxLines="1"
+            android:layout_marginTop="@dimen/dp12"
+            android:layout_marginStart="@dimen/dp16"
+            android:textColor="@color/black"
+            android:textSize="22sp"
+            app:layout_constraintTop_toBottomOf="@id/rv_movies"
+            android:text="Popular TV shows .." />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_tv_series"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/rv_movies"
+            app:layout_constraintTop_toBottomOf="@id/tv_label_series"
             android:clipToPadding="false"
             tools:itemCount="4"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/row_movie_short"
             tools:orientation="horizontal" />
 
+        <TextView
+            android:id="@+id/tv_label_trending"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/bangers"
+            android:paddingEnd="@dimen/dp12"
+            android:maxLines="1"
+            android:layout_marginTop="@dimen/dp12"
+            android:layout_marginStart="@dimen/dp16"
+            android:textColor="@color/black"
+            android:textSize="22sp"
+            app:layout_constraintTop_toBottomOf="@id/rv_tv_series"
+            android:text="Trending Now .." />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_trending"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/rv_tv_series"
+            app:layout_constraintTop_toBottomOf="@id/tv_label_trending"
             android:clipToPadding="false"
             tools:itemCount="4"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
