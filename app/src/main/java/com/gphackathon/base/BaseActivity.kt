@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.forEach
 import androidx.lifecycle.Observer
+import com.gphackathon.util.api.ApiClient
 import com.gphackathon.util.helper.NetworkUtil
 
 /* Created by ashiq.buet16 **/
@@ -48,6 +49,8 @@ abstract class BaseActivity: AppCompatActivity(), View.OnClickListener {
         afterOnCreate()
 
         observeConnectivity()
+
+        ApiClient.initRetrofit(this)
 
     }
 
