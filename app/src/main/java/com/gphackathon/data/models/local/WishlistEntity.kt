@@ -13,5 +13,8 @@ import com.gphackathon.data.Const
 data class WishlistEntity(
     @PrimaryKey(autoGenerate = true)
     val id: Int,
-    val name: String
+    val name: String,
+    val poster_path: String,
+    val date: String,
+    val type: String
 )

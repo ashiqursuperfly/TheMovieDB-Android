@@ -24,7 +24,7 @@ import com.gphackathon.data.models.local.WishlistEntity
     exportSchema = false
 )
 @TypeConverters(DateConverter::class)
-abstract class AppDB : RoomDatabase() {
+abstract class  AppDB : RoomDatabase() {
 
     abstract fun wishlistDao(): WishlistDao
 

@@ -1,6 +1,8 @@
 package com.gphackathon.data.db.dao
 
-import androidx.room.Dao
+import androidx.room.*
+import com.gphackathon.data.Const
+import com.gphackathon.data.models.local.WishlistEntity
 
 
 /*
@@ -10,6 +12,19 @@ import androidx.room.Dao
 
 @Dao
 interface WishlistDao {
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insert(record: WishlistEntity): Long
+
+    @Delete
+    fun delete(record: WishlistEntity): Int
+
+    @Query("SELECT * FROM " + Const.DB.TABLE_NAME.WISHLIST + " WHERE id=:id")
+    fun get(id: Int): WishlistEntity?
+
+    @Query("SELECT * FROM " + Const.DB.TABLE_NAME.WISHLIST)
+    fun getAll(): List<WishlistEntity>
+
 
     /* @Insert(onConflict = OnConflictStrategy.REPLACE)
      fun insert(record: LocalCaptureRecord): Long

@@ -1,8 +1,11 @@
 package com.gphackathon.ui.viewholders
 
 import android.view.View
+import androidx.core.content.ContextCompat
+import com.gphackathon.R
 import com.gphackathon.base.BaseViewHolder
 import com.gphackathon.data.Const
+import com.gphackathon.data.db.AppDB
 import com.gphackathon.data.models.MovieData
 import com.gphackathon.databinding.RowMovieShortBinding
 import com.gphackathon.util.helper.DateUtil
@@ -20,6 +23,8 @@ class MovieViewHolder(
     private val binding: RowMovieShortBinding
 ) : BaseViewHolder<MovieData, MovieData.OnClick>(binding.root) {
 
+    val wishlistDb = AppDB.getInstance().wishlistDao()
+
     override fun onBind() {
         mItem?.let {
             binding.tvName.text = it.title
@@ -31,6 +36,13 @@ class MovieViewHolder(
 
             binding.tvVotes.text = it.vote_count.toString()
             binding.image.load(it.getPosterImageUrl())
+
+            if (wishlistDb.get(it.id) != null) {
+                binding.btnAddToWishlist.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.ic_wishlist_fill))
+            }
+            else {
+                binding.btnAddToWishlist.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.ic_wishlist))
+            }
             setClickListener(binding.container)
         }
     }

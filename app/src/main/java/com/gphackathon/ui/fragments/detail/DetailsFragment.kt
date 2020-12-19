@@ -1,6 +1,7 @@
 package com.gphackathon.ui.fragments.detail
 
 import android.view.View
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
@@ -40,11 +41,41 @@ class DetailsFragment: BaseFragment() {
                 DialogUtil.showLoader(requireContext())
                 val movie = GsonUtil.fromJson(args.movieJson.toString(), MovieData::class.java)
                 mDetailsViewModel.getMovieDetails(movie.id)
+                btn_add_to_wishlist.setOnClickListener {
+                   val success = mDetailsViewModel.wishlistAddOrRemove(
+                        movie.id,
+                        movie.title,
+                        movie.release_date,
+                        movie.poster_path,
+                        "movie"
+                   )
+                    if (success) {
+                        btn_add_to_wishlist.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.ic_wishlist_fill))
+                    }
+                    else {
+                        btn_add_to_wishlist.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.ic_wishlist))
+                    }
+                }
             }
             args.seriesJson != null -> {
                 DialogUtil.showLoader(requireContext())
                 val series = GsonUtil.fromJson(args.seriesJson.toString(), TvSeriesData::class.java)
                 mDetailsViewModel.getSeriesDetails(series.id)
+                btn_add_to_wishlist.setOnClickListener {
+                    val success = mDetailsViewModel.wishlistAddOrRemove(
+                        series.id,
+                        series.name,
+                        series.first_air_date,
+                        series.poster_path,
+                        "tv"
+                    )
+                    if (success) {
+                        btn_add_to_wishlist.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.ic_wishlist_fill))
+                    }
+                    else {
+                        btn_add_to_wishlist.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.ic_wishlist))
+                    }
+                }
             }
             else -> {
                 Toaster.showToast("Error: Invalid Content !")
@@ -74,6 +105,14 @@ class DetailsFragment: BaseFragment() {
         }
         tv_votes.text = movie.vote_count.toString()
         image.load(Const.Api.BASE_POSTER_IMAGE + movie.poster_path)
+
+        if (mDetailsViewModel.isInWishlist(movie.id)) {
+            btn_add_to_wishlist.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.ic_wishlist_fill))
+        }
+        else {
+            btn_add_to_wishlist.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.ic_wishlist))
+        }
+
     }
     private fun updateUi(series: SeriesDetailResponse) {
         tv_name.text = series.name
@@ -96,6 +135,12 @@ class DetailsFragment: BaseFragment() {
         }
         tv_votes.text = series.vote_count.toString()
         image.load(Const.Api.BASE_POSTER_IMAGE + series.poster_path)
+        if (mDetailsViewModel.isInWishlist(series.id)) {
+            btn_add_to_wishlist.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.ic_wishlist_fill))
+        }
+        else {
+            btn_add_to_wishlist.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.ic_wishlist))
+        }
     }
 
     private fun observeData() {
@@ -116,4 +161,5 @@ class DetailsFragment: BaseFragment() {
             }
         )
     }
+
 }

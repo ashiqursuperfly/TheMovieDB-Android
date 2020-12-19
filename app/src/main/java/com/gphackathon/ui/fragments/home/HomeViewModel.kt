@@ -3,6 +3,8 @@ package com.gphackathon.ui.fragments.home
 import androidx.lifecycle.MutableLiveData
 import com.gphackathon.base.BaseViewModel
 import com.gphackathon.data.Const
+import com.gphackathon.data.db.AppDB
+import com.gphackathon.data.models.local.WishlistEntity
 import com.gphackathon.data.response.PopularMoviesResponse
 import com.gphackathon.data.response.PopularTVSeriesResponse
 import com.gphackathon.data.response.TrendingContentResponse
@@ -19,6 +21,7 @@ import timber.log.Timber
 
 class HomeViewModel: BaseViewModel() {
 
+    val wishlistDb = AppDB.getInstance().wishlistDao()
 
     val mPopularMoviesLiveData = MutableLiveData<PopularMoviesResponse>()
     val mPopularSeriesLiveData = MutableLiveData<PopularTVSeriesResponse>()
@@ -96,6 +99,25 @@ class HomeViewModel: BaseViewModel() {
                 )
         )
 
+    }
+
+    fun wishlistAddOrRemove(
+        id: Int,
+        name: String,
+        date: String,
+        poster_path: String,
+        type: String
+    ) {
+        if (wishlistDb.get(id) == null) {
+            wishlistDb.insert(WishlistEntity(
+                id, name, poster_path, date, type
+            ))
+        }
+        else {
+            wishlistDb.delete(WishlistEntity(
+                id, name, poster_path, date, type
+            ))
+        }
     }
 
 }
