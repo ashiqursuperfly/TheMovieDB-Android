@@ -35,7 +35,7 @@
                 android:fontFamily="@font/bangers"
                 android:maxLines="1"
                 android:textColor="?attr/colorTitleTextPrimary"
-                android:textSize="16sp"
+                android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/image"
                 tools:text="Forrest Gump" />
@@ -46,7 +46,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/dp16"
                 android:layout_marginTop="@dimen/dp4"
-                android:fontFamily="@font/ubuntu_mono"
+                android:fontFamily="@font/cairo"
                 android:textColor="?attr/colorNormalTextPrimary"
                 android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -60,7 +60,7 @@
                 app:srcCompat="@drawable/ic_vote"
                 android:layout_marginTop="@dimen/dp12"
                 android:layout_marginStart="@dimen/dp16"
-                android:fontFamily="@font/ubuntu_mono"
+                android:fontFamily="@font/cairo"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_date"
                 />
@@ -69,7 +69,7 @@
                 android:id="@+id/tv_votes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
+                android:fontFamily="@font/cairo"
                 android:layout_marginTop="@dimen/dp12"
                 android:textColor="?attr/colorNormalTextPrimary"
                 android:textSize="14sp"
