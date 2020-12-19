@@ -7,17 +7,17 @@ import com.gphackathon.R
 import com.gphackathon.util.helper.GlideUtil
 
 fun ImageView.load(res: Int) {
-    GlideUtil.load(res, R.drawable.ic_launcher_foreground, this)
+    GlideUtil.load(res, R.drawable.ic_broken_img, this)
 }
 
 fun ImageView.load(url: String?) {
-    GlideUtil.load(url, R.drawable.ic_launcher_foreground, this)
+    GlideUtil.load(url, R.drawable.ic_broken_img, this)
 }
 
 fun ImageView.loadProfile(url: String?) {
-    GlideUtil.load(url, R.drawable.ic_launcher_foreground, this)
+    GlideUtil.load(url, R.drawable.ic_broken_img, this)
 }
 
 fun ImageView.load(url: Uri?) {
-    GlideUtil.load(url, R.drawable.ic_launcher_foreground, this)
+    GlideUtil.load(url, R.drawable.ic_broken_img, this)
 }

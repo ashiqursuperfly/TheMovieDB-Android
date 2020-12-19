@@ -63,7 +63,7 @@ class LimitCacheSizeGlideModule : AppGlideModule() {
     }
 
     companion object {
-        private const val DISK_CACHE_SIZE_FOR_SMALL_INTERNAL_STORAGE_MIB = 50 * 1024 * 1024
+        private const val DISK_CACHE_SIZE_FOR_SMALL_INTERNAL_STORAGE_MIB = 50 * 1024 * 1024 // 50 MB
     }
 }
 
