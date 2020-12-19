@@ -50,7 +50,6 @@
 
 
 ### Project Structure
-- **`android`**
   - `/app/src/grameenphone` directory contains specific resources for Grameenphone app's flavor
   - `/app/src/telenor` directory contains specific resources for Grameenphone app's flavor
   - `/app/src/main/java/com/gphackathon` directory contains the user interfaces, view models, models, database etc. It has four sub-directories:
