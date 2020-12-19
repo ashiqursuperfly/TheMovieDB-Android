@@ -64,6 +64,6 @@
 - The project was build using the latest(v4.1) Android Studio. Opening it with android studio version 4.0 or up should be fine.
 - Wait until the gradle dependencies are resolved
 - The project uses **gradle version (6.5)**. In case of any issues, check your gradle version.
-- Select your desired **`build variant`** from the build variant tab
+- Select your desired **`build variant`** from the build variant tab. The options should be: `grameenphoneDebug`, `grameenphoneRelease`, `telenorDebug`, `telenorRelease`.
 - Run the project
 
