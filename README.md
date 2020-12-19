@@ -3,6 +3,7 @@
 ### Implementation Details
 - uses **`AndroidX`**
 - uses **`Kotlin`**
+- uses **`databinding`**
 - uses android jetpack **`navigation`** and **`architecture`** components
 - architectural pattern **`MVVM`** as recommended by Google
 - deals with security issues by keeping secrets like `api_key` isolated from source code
@@ -46,9 +47,6 @@
 
 <img src="demo.gif" height="590" width="280">
 
-
-
-
 ### Project Structure
   - `/app/src/grameenphone` directory contains specific resources for Grameenphone app's flavor
   - `/app/src/telenor` directory contains specific resources for Grameenphone app's flavor
@@ -60,3 +58,12 @@
     - `app` contains the base mulidexapplication for this app 
       
   - `app/src/main/res` contains the xml resources for this project i.e xml ui layouts, drawables, themes, colors and strings.
+
+## Installation Guidelines
+- Clone/Download the repo
+- The project was build using the latest(v4.1) Android Studio. Opening it with android studio version 4.0 or up should be fine.
+- Wait until the gradle dependencies are resolved
+- The project uses **gradle version (6.5)**. In case of any issues, check your gradle version.
+- Select your desired **`build variant`** from the build variant tab
+- Run the project
+
