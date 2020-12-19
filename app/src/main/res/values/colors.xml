@@ -6,6 +6,8 @@
     <color name="background_white">#F0FFF0</color>
     <color name="overlay_white">#E6F7E6</color>
 
+    <color name="grey">#ABA9A9</color>
+
     <color name="darkest_black">#FF000000</color>
     <color name="brightest_white">#FFFFFFFF</color>
 
