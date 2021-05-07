@@ -1,15 +1,22 @@
 ## Codemasters Submission
 
 ### Implementation Details
-- uses `AndroidX`
-- uses `Kotlin`
-- uses android jetpack `navigation` and `architecture` components
-- architectural pattern `MVVM` as recommended by Google
+- uses **`AndroidX`**
+- uses **`Kotlin`**
+- uses **`databinding`**
+- uses android jetpack **`navigation`** and **`architecture`** components
+- architectural pattern **`MVVM`** as recommended by Google
 - deals with security issues by keeping secrets like `api_key` isolated from source code
-- uses two types of caching mechanism.
+- uses **`Glide`** for fetching remote images
+- uses **`Retrofit`** and **`RxAndroid`** to make API calls
+- uses **`Chucker`** for testing and logging API calls
+- uses **`Room`** ORM for local db
+- uses **`Lotte`** for animations
+- uses **two** types of **caching** mechanism.
   - Glide Image Loader cache implementation. My implementation caches remote images upto 50mb which allows app to render high res images faster.
-  - API caching. Caches network calls made by retrofit and loads data accordingly. These allows the user to have offline mode even when no internet is available.
+  - API caching. Caches network calls made by **`retrofit`** and loads data accordingly. These allows the user to have offline mode usage (when no internet is available).
 - uses separate build flavors for `grameenphone` and `telenor`. (Different icons and different app name)
+- uses `Chucker`, `junit`, `espresso` and `roboelectric` for testing
 
 ### Features
 
@@ -45,12 +52,7 @@
 
 <img src="demo.gif" height="590" width="280">
 
-
-
-
 ### Project Structure
-- **`android`** - contains the android app ([Android Repository](https://github.com/TeamKagojerNouka/HackTheVerse_KagojerNoukaAndroid))
-
   - `/app/src/grameenphone` directory contains specific resources for Grameenphone app's flavor
   - `/app/src/telenor` directory contains specific resources for Grameenphone app's flavor
   - `/app/src/main/java/com/gphackathon` directory contains the user interfaces, view models, models, database etc. It has four sub-directories:
@@ -61,3 +63,12 @@
     - `app` contains the base mulidexapplication for this app 
       
   - `app/src/main/res` contains the xml resources for this project i.e xml ui layouts, drawables, themes, colors and strings.
+
+## Installation Guidelines
+- Clone/Download the repo
+- The project was build using the latest(v4.1) Android Studio. Opening it with android studio version 4.0 or up should be fine.
+- Wait until the gradle dependencies are resolved
+- The project uses **gradle version (6.5)**. In case of any issues, check your gradle version.
+- Select your desired **`build variant`** from the build variant tab. The options should be: `grameenphoneDebug`, `grameenphoneRelease`, `telenorDebug`, `telenorRelease`.
+- Run the project
+
