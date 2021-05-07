@@ -21,7 +21,7 @@
 
 3. Theres a wishlist icon in this page, that shows if any of the movie/tv show in this page was wishlisted by the user.
 
-<img src="s1.jpeg" height="590" width="280">
+<img src="ss/s1.jpeg" height="590" width="280">
 
 #### Detail Page
 
@@ -31,7 +31,7 @@
 
 3. The wishlisted items are stored in a local `SQLite` database (powered by `ROOM` ORM)
 
-<img src="s2.jpeg" height="590" width="280">
+<img src="ss/s2.jpeg" height="590" width="280">
 
 #### Wishlist Page
 
@@ -39,7 +39,7 @@
 
 2. A user can remove an item from the wishlist by pressing the `delete` icon on the right.
 
-<img src="s3.jpeg" height="590" width="280">
+<img src="ss/s3.jpeg" height="590" width="280">
 
 **The following video demonstrates the app's features:**
 
